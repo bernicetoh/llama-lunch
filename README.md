@@ -33,10 +33,10 @@ The LlaMa2 model from Huggingface accepts 7 parameters: `Message`, `System promp
 
   In the context of LlaMa Lunch, we want to generate chef-like recipes that are feasible. As such, we include a system prompt of 'You are a chef brainstorming recipes'. This directive ensures that the generated recipes are not just creative but also within the realm of feasibility.
 
-  Inspiration to let the model adopt a persona (Chef) was also driven by the [LlaMa2 paper](https://arxiv.org/pdf/2307.09288.pdf) that details the type of prompts the model can handle.
+The decision to incorporate a persona (Chef) into the model was influenced by the insights from the [LlaMa2 paper](https://arxiv.org/pdf/2307.09288.pdf) that details the type of prompts the model can handle:
 
   <p align="center">
-    <img src="llama-fe/src/assets/llama-prompt.png" alt="llama prompts" width="300px">
+    <img src="llama-fe/src/assets/llama-prompt.png" alt="llama prompts" width="600px">
   </p>
 
 - **`Max new tokens`**: Maximum number of tokens to generate.
