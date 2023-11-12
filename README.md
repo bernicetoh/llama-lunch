@@ -1,5 +1,8 @@
 # LlaMa Lunch
 
+<p align="center">
+  <img src="llama-fe/src/assets/cook.png" alt="logo">
+</p>
 LlaMa Lunch is an interactive AI-cook assistant built with LlaMa2 designed to inspire you with recipe ideas for your upcoming culinary endeavours.
 Just input the ingredients you wish to work with, and let LlaMa Lunch seamlessly generate a customized recipe tailored to your preferences.
 
@@ -25,17 +28,21 @@ The LlaMa2 model from Huggingface accepts 7 parameters: `Message`, `System promp
 - `Message`: The user's input prompt
 
 - `System prompt`: A block of text appended before the `Message` to steer LlaMa2's responses. This helps to guide the model's subsequent behaviour through preemptive framing of the discussion paramters.
+
   In the context of LlaMa Lunch, we want to generate chef-like recipes that are feasible. As such, we include a system prompt of 'You are a chef brainstorming recipes'. This directive ensures that the generated recipes are not just creative but also within the realm of feasibility.
 
 - `Max new tokens`: Maximum number of tokens to generate.
   This determines the maximum length of the model's output. Setting a lower value limits the maximum number of tokens generated to avoid excessively long responses.
+
   To generate more elaborate and extended recipes, we have configured this value to its maximum setting.
 
 - `Temperature`: Determines the randomness of the outputs.
   A higher temperature value generates a vastly different output. A low temperature value generates a more consistent and conservative responses.
+
   For LlaMa Lunch, our goal is to produce captivating recipes, so we opted for a higher temperature setting to enhance the diversity and creativity of our generated output.
 
 - `Repetition penalty`: Penalizes or reduces the probability of generating tokens that have recently appeared in the generated text. A value greater than 1 discourages word repetition in the model's output.
+
   Similar to the rationale behind the value set for `Temperature`, we want to ensure creativity in recipes generated. Hence, this means reducing repetition by increasing the repetition penalty value.
 
 - `Top-p`: Constraints the next token selection to the top-k most likely tokens at each step.
