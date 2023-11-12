@@ -25,19 +25,20 @@ function App() {
   useEffect(() => {
     const send = async () => {
       try {
-        if (isSent && currMsg) {
+        if (isSent) {
           console.log("fetching");
           setFetching(true);
-
-          const res = await getReplyFromQn(currMsg);
-          const temp = messages;
-          temp.push({
-            isUser: false,
-            message: res,
-          });
-          saveMessages(temp);
-          setMessages(temp);
-          setFetching(false);
+          if (currMsg) {
+            const res = await getReplyFromQn(currMsg);
+            const temp = messages;
+            temp.push({
+              isUser: false,
+              message: res,
+            });
+            saveMessages(temp);
+            setMessages(temp);
+            setFetching(false);
+          }
         }
         setIsSent(false);
       } catch (e) {

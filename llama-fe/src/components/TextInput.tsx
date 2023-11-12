@@ -33,6 +33,7 @@ function TextInput({
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
+    setIsSent(false);
     console.log("handling");
     setCurrMsg(thisMsg);
     const temp = messages;
