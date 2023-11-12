@@ -3,6 +3,7 @@
 <p align="center">
   <img src="llama-fe/src/assets/cook.png" alt="logo" width="300px">
 </p>
+
 Integrated with Meta's Large Language Model, [LlaMa2](https://ai.meta.com/llama/), LlaMa Lunch is an interactive AI-cook assistant designed to inspire you with recipe ideas for your upcoming culinary endeavours.
 
 Just input the ingredients you wish to work with, and let LlaMa Lunch seamlessly generate a customized recipe tailored to your preferences.
