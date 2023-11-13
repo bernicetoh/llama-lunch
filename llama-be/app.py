@@ -12,16 +12,13 @@ def getLlama():
     food_mapping = ['🍕 - Pizza', '🍔 - Hamburger', '🍟 - Fries', '🍣 - Sushi', '🍦 - Ice Cream', '🍓 - Strawberry', '🍝 - Spaghetti', '🍛 - Curry Rice', '🍤 - Shrimp', '🍩 - Doughnut', '🍪 - Cookie', '🍫 - Chocolate', '🍬 - Candy', '🍯 - Honey', '🍍 - Pineapple', '🥑 - Avocado', '🥖 - Baguette', '🧀 - Cheese', '🍇 - Grapes', '🍉 - Watermelon', '🍊 - Tangerine', '🍋 - Lemon', '🍌 - Banana', '🍎 - Apple', '🍐 - Pear', '🍑 - Peach', '🍒 - Cherries', '🥕 - Carrot', '🥦 - Broccoli', '🍄 - Mushroom', '🍅 - Tomato', '🥔 - Potato', '🥓 - Bacon', '🥞 - Pancakes', '🍽️ - Plate', '🥢 - Chopsticks', '🌮 - Taco', '🌯 - Burrito', '🍖 - Meat', '🥩 - Steak', '🍗 - Chicken', '🦪 - Oyster', '🍲 - Pot of Food', '🥗 - Salad', '🎂 - Cake', '🧁 - Cupcake', '🥧 - Pie', '🥭 - Mango', '🍆 - Eggplant', '🥒 - Cucumber', '🌽 - Corn', '🥜 - Peanuts', '🌰 - Chestnut', '🍞 - Bread', '🥐 - Croissant', '🧇 - Waffle', '🌭 - Sausage', '🥪 - Sandwich', '🥟 - Dumpling', '🥨 - Pretzel', '🥯 - Bagel', '🍴 - Fork and Knife', '🧂 - Salt']
 
     prompt = request.args.get('prompt')
-    # client = Client("https://huggingface-projects-llama-2-7b-chat.hf.space/--replicas/gm5p8/") # 7B
-    client = Client("https://ysharma-explore-llamav2-with-tgi.hf.space/--replicas/fx2sq/") # 70B
-    result = client.predict(
-        prompt, # str  in 'parameter_7' Textbox component 
+    system_prompt = \
         "You are a chef brainstorming recipes to cook with the given ingredients. You must give me a recipe that uses only the ingredients input by the user. Your answers should not include ingredients not specified by the user. Come up with a succinct name for the recipe. Bold appropriate headings such as Ingredients and Duration using markdown.\n" + \
         "Here is the list of emojis mapping: " + str(food_mapping) + "\n\n" + \
-        # EXAMPLE 1
         "EXAMPLE 1:\n" + \
         "Ingredients - eggs, bread, butter, bacon, Hollandaise Sauce\n" + \
-        "Recipe: Eggs Benedict\n" + \
+        "Recipe -\n" + \
+        "Title: Eggs Benedict\n" + \
         "Duration: 30minutes\n" + \
         "Ingredients:\n" + \
         "+ 4 eggs 🥚\n" + \
@@ -36,10 +33,10 @@ def getLlama():
         "4. Toast bread with bacon oil using the same skillet used for frying bacon. Brush with melted bacon fat for added flavor.\n" + \
         "5. Arrange the poached eggs on the toasted bread. Gently pour the hollandaise sauce over the eggs. Add the crispy bacon slices to the side. Serve immediately, garnished with a sprinkle of fresh herbs if desired 😋" + \
         "\n\n" + \
-        # EXAMPLE 2
         "EXAMPLE 2:\n" + \
         "Ingredients - pasta, thyme, butter, garlic, ham, sausage\n" + \
-        "Recipe: Thyme and Herb Pasta\n" + \
+        "Recipe -\n" + \
+        "Title: Thyme and Herb Pasta\n" + \
         "Duration: 25 minutes\n" + \
         "Ingredients:\n" + \
         "+ 8 oz pasta of your choice 🍝\n" + \
@@ -57,18 +54,24 @@ def getLlama():
         "Enjoy your delicious and easy Thyme and Herb Pasta!" + \
         "\n\n" + \
         "Generate Recipe\n" + \
-        "Ingredients - ",
+        "Ingredients - "
+
+    client = Client("https://huggingface-projects-llama-2-7b-chat.hf.space/--replicas/gm5p8/") # 7B
+    # client = Client("https://ysharma-explore-llamav2-with-tgi.hf.space/--replicas/fx2sq/") # 70B
+    result = client.predict(
+        prompt, # str  in 'parameter_7' Textbox component 
+        system_prompt,
         # 7b
-        # 1984,	# int | float (numeric value between 1 and 2048) in 'Max new tokens' Slider component
-		# 0.75,	# int | float (numeric value between 0.1 and 4.0) in 'Temperature' Slider component
-		# 0.8,	# int | float (numeric value between 0.05 and 1.0) in 'Top-p (nucleus sampling)' Slider component
-		# 125,  # int | float (numeric value between 1 and 1000) in 'Top-k' Slider component
-		# 1,	# int | float (numeric value between 1.0 and 2.0) in 'Repetition penalty' Slider component
+        1984,	# int | float (numeric value between 1 and 2048) in 'Max new tokens' Slider component
+		0.75,	# int | float (numeric value between 0.1 and 4.0) in 'Temperature' Slider component
+		0.8,	# int | float (numeric value between 0.05 and 1.0) in 'Top-p (nucleus sampling)' Slider component
+		125,  # int | float (numeric value between 1 and 1000) in 'Top-k' Slider component
+		1,	# int | float (numeric value between 1.0 and 2.0) in 'Repetition penalty' Slider component
         # 70b
-        0.45, # temperature
-        4096, # max_new_tokens
-        0.8, # top_p
-        1.1, # repetition
+        # 0.45, # temperature
+        # 4096, # max_new_tokens
+        # 0.8, # top_p
+        # 1.1, # repetition
         api_name="/chat"
     )
     print(result)
