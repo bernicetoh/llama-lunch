@@ -8,5 +8,7 @@ We first attempted prompt engineering and experimented with carefully curated pr
 ## LoRA
 Prompt engineering actually worked surprisingly well. When showed to a couple of friends who frequently cook, they were genuinely impressed by the details and precision generated in the recipes. While the performance is already very much satisfactory, we tried experimenting further by re-training the model with LoRA layers. Unfortunately, after numerous attempts, even with Google Collab Pro, we simply do not have sufficient memory to completely train the model. Still, the code is provided in our train code, [`Promptly_plated_LORA.ipynb`](./lora_train/Promptly_plated_LORA.ipynb) but it shows a cuda memory constraint error.
 
+Dataset used in re-training the model is obtained from [`Hugging Face`](https://huggingface.co/datasets/recipe_nlg).
+
 ## Legacy
 All out other misc attempts and old code / model / engine is stored here.
