@@ -6,9 +6,16 @@
 
 Integrated with Meta's Large Language Model, [LlaMa2](https://ai.meta.com/llama/), LlaMa Lunch is an interactive AI-cook assistant designed to inspire you with recipe ideas for your upcoming culinary endeavours.
 
-Just input the ingredients you wish to work with, and let LlaMa Lunch seamlessly generate a customized recipe tailored to your preferences.
+Just input the ingredients you wish to work with, and let LlaMa Lunch seamlessly generate a customized recipe tailored to your preferences!
 
-In the interest of convenience, LlaMa Lunch leverages the API endpoints provided by [Hugging Face](https://huggingface.co/spaces/huggingface-projects/llama-2-7b-chat) rather than relying on the training code located in the `train_code` directory.
+In the interest of convenience, LlaMaLunch leverages the API endpoint provided by [Hugging Face](https://huggingface.co/spaces/huggingface-projects/llama-2-7b-chat) rather than relying on the training code located in the [`train_code/`](./train_code/) directory. But the behaviour is replicated as shown in the Jupyter Notebook.
+
+We have detailed our efforts and attempts in [`train_code/`](./train_code/).
+
+## Product Demo
+All the user needs to do is input some ingredients and LlaMaLunch will generate a recipe using only the ingredients provided as shown below:
+
+![demo](./train_code/in_context_with_llama/demo.png)
 
 ## Getting Started
 
